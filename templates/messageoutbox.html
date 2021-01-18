@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+
+ outbox
+
+{% endblock %}
+
+{% block content %}
+<h4 class="text-center"><a href="{% url 'messageinbox' %}"> Inbox</a> | Outbox </h4><hr>
+<form  method="post">
+    {{ message_form.pmreciever }}<br>
+    {{ message_form.pmbody }}<br>
+    {% csrf_token %}
+    <p><input type="submit" class="btn btn-primary btn-sm" value="Send"></p>
+  </form>
+
+{% for item in allmessage %}
+ Pm to {{ item.pmreciever }} | {{ item.created|timesince }} ago <a href="{% url 'messagedetailoutbox' item.id %}"> read</a><br>
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

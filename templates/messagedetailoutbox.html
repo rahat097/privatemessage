@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+
+    Message Detail
+
+{% endblock %}
+
+{% block content %}
+<h4 class="text-center">Message Detail</h4><hr>
+
+
+{{ message.pmsender }} to {{ message.pmreciever }} || {{ message.created|timesince }} ago<hr>
+{{ message.pmbody }}
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

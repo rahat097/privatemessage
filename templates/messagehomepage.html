@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+    {% block title %}
+
+ inbox
+
+{% endblock %}
+
+{% block content %}
+<h4 class="text-center">Inbox | <a href="{% url 'messageoutbox' %}">Outbox</a> </h4><hr>
+
+{% for item in allmessage %}
+{% if not item.is_seen %}<i class="fas fa-envelope"></i>
+{% else %}<i class="far fa-envelope-open"></i>
+{% endif %}
+ Pm by {{ item.pmsender }} | {{ item.created|timesince }} ago <a href="{% url 'messagedetail' item.id %}"> read</a><br>
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
