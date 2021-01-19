@@ -7,8 +7,8 @@ from django.contrib.auth.models import User
 
 
 class PrivateMessage(models.Model):
-	pmsender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pmsender')
-	pmreciever = models.ForeignKey(User, on_delete=models.CASCADE, related_name='pmreciever')
+	pmsender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='privatemessage2')
+	pmreciever = models.ForeignKey(User, on_delete=models.CASCADE, related_name='privatemessage')
 	pmbody = models.TextField()
 	created = models.DateTimeField(auto_now_add=True)
 	is_seen = models.BooleanField(default=False)

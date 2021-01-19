@@ -37,7 +37,8 @@ def messagedetailoutbox(request,id):
 
 
 def messageoutbox(request):
-	allmessage = PrivateMessage.objects.filter(pmsender = request.user).order_by('-id')
+	user = User.objects.get(id = request.user.id )
+	allmessage = user.privatemessage2.all().order_by('-id')
 	if request.method == 'POST':
 		if not User.objects.filter(username = request.POST['pmreciever'] ).exists():
 			messages.info(request, "User dont exist, Write correct username")
@@ -69,7 +70,8 @@ def messageoutbox(request):
 
 
 def messageinbox(request):
-	allmessage = PrivateMessage.objects.filter(pmreciever = request.user).order_by('-id')
+	user = User.objects.get(id = request.user.id )
+	allmessage = user.privatemessage.all().order_by('-id')
 
 
 	context = {
